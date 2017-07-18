@@ -1,0 +1,12 @@
+Package: DoseCombo
+Type: Package
+Title: Combination Dose Escalation 
+Version: 0.1.0
+Author: Dominic Magirr
+Maintainer: Dominic Magirr <dominic.magirr@astrazeneca.com>
+Description: Perform computations for combination dose escalation.
+    Simulate trials to refine operating characteristics.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 5.0.1
