@@ -14,10 +14,10 @@ create_combo_prior = function(model_1,
                               eta_prec = 0.5){
   
   
-  prior = list(mu_1 = model_1$model@mean,
-               mu_2 = model_2$model@mean,
-               omega_1 = solve(model_1$model@cov),
-               omega_2 = solve(model_2$model@cov),
+  prior = list(mu_1 = model_1@mean,
+               mu_2 = model_2@mean,
+               omega_1 = solve(model_1@cov),
+               omega_2 = solve(model_2@cov),
                eta_mean = eta_mean,
                eta_prec = eta_prec)
  

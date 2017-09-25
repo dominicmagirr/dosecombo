@@ -23,7 +23,8 @@ plot_combo_dose_id = function(doses){
     facet_grid(dose_1 ~ dose_2) +
     theme(axis.title = element_blank(),
           axis.text = element_blank(),
-          axis.ticks = element_blank())
+          axis.ticks = element_blank(),
+          strip.text.y = element_text(angle = 0))
 
 
   p

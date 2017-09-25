@@ -7,7 +7,14 @@
 #' @param prior A list of prior parameters.
 #' @param over_limit A number between 0 and 1. If the probability of overdosing is more than 'over_limit'
 #' then this dose will be declared inadmissible.
-#' @return A list of 4 items: dose combinations on original scale, dose combinations on log scale, plot of prior distribution, plot of prior distribution including marginals.
+#' @return A list of 8 items:
+#' - dose combinations on original scale,
+#' - dose combinations on log scale,
+#' - reference dose 1,
+#' - reference dose 2,
+#' - over_limit (maximum acceptable probability of overdosing)
+#' - plot of prior distribution,
+#' - plot of prior distribution including marginals.
 #' @export
 #'
 

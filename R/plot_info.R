@@ -74,7 +74,9 @@ plot_info = function(info, doses, df = NULL){
     geom_point(data = data_vis,
                aes(x = 1,
                    y = median))  +
-    theme(legend.position = "none") +
+    theme(legend.position = "none",
+          strip.text.y = element_text(angle = 0),
+          axis.text.x = element_text(angle = 45)) +
     ylab(" ") +
     xlab(" ")
 

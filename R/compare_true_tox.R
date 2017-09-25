@@ -29,10 +29,12 @@ compare_true_tox <- function(model_sum, rule_sum){
   no_mtd_model = sum(is.na(model_sum$mtds))
   no_mtd_rule = sum(rule_sum@doseSelected == 0)
   
-  
+  rule_tox_manual = rep(NA, length(rule_sum@doseSelected))
+  rule_tox_manual[rule_sum@doseSelected != 0] = rule_sum@toxAtDosesSelected
+  rule_tox_manual
   
   model_tox = data.frame(table(tox_category(model_sum$tox_at_selected)),method = "model")
-  rule_tox = data.frame(table(tox_category(rule_sum@toxAtDosesSelected)),method = "3 + 3")
+  rule_tox = data.frame(table(tox_category(rule_tox_manual)),method = "3 + 3")
   
   full_tox = rbind(model_tox, rule_tox)
   

@@ -43,6 +43,6 @@ create_mono_prior = function(doses,
   
   legend("topright",legend=c("quantiles", "approximation"),col=c("blue", "red"),lty=1,bty="n")
   
-  return(model_1)
+  return(model_1$model)
   
 }

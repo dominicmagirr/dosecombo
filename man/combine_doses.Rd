@@ -21,7 +21,14 @@ combine_doses(doses_1, doses_2, ref_dose_1, ref_dose_2, prior, over_limit)
 then this dose will be declared inadmissible.}
 }
 \value{
-A list of 4 items: dose combinations on original scale, dose combinations on log scale, plot of prior distribution, plot of prior distribution including marginals.
+A list of 8 items:
+- dose combinations on original scale,
+- dose combinations on log scale,
+- reference dose 1,
+- reference dose 2,
+- over_limit (maximum acceptable probability of overdosing)
+- plot of prior distribution,
+- plot of prior distribution including marginals.
 }
 \description{
 Choose dose combinations to be investigated, and plot the prior probabilities of toxicity.

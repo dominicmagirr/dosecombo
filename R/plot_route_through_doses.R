@@ -8,6 +8,10 @@
 
 plot_route_through_doses = function(doses, route_through_doses, start_rule){
   
+  ## check if doses$orig is a square
+  
+  ## If not convert route_through_doses to route_through_square
+  
   my_z = route_through_doses
   
   n_1 = length(unique(doses$orig[,1]))
@@ -25,10 +29,10 @@ plot_route_through_doses = function(doses, route_through_doses, start_rule){
   my_b = min(panels$b)
   my_t = max(panels$t)
   ###############
-  xs = 1:n_1 / n_1 - 1 / (n_1 * 2)
-  ys = 1:n_2 / n_2 - 1 / (n_2 * 2)
+  xs = 1:n_2 / n_2 - 1 / (n_2 * 2)
+  ys = 1:n_1 / n_1 - 1 / (n_1 * 2)
   
-  my_x = xs[ifelse(my_z %% n_2,my_z %% n_2,4)]
+  my_x = xs[ifelse(my_z %% n_2,my_z %% n_2, n_2)]
   my_y = ys[ceiling(my_z / n_2)]
   
   

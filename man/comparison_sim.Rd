@@ -5,7 +5,9 @@
 \title{Simulate model-based and rule-based trials, and compare results.}
 \usage{
 comparison_sim(truth, doses, starting_dose, route_through_doses, max_n_cohort,
-  cohort_size, n_sims, seed)
+  cohort_size, n_sims, seed, max_cohort_size, max_n, max_p_target,
+  add_random = FALSE, frac_target = 0.75, over_limit_end = NA,
+  n_iter = 2500)
 }
 \arguments{
 \item{truth}{A vector of 'true' p(DLT)'s, corresponding to the rows of 'doses'.}
@@ -23,6 +25,20 @@ comparison_sim(truth, doses, starting_dose, route_through_doses, max_n_cohort,
 \item{n_sims}{The number of simulations.}
 
 \item{seed}{The random number seed.}
+
+\item{max_cohort_size}{Maximum size of cohort. If this is reached, and the max_n or max_p_target is reached then the trial can stop.}
+
+\item{max_n}{Maximum total sample size. If this is reached and the max_cohort_size is reached for recommended dose then the trial can stop.}
+
+\item{max_p_target}{Maximum probability of targeted toxicity. If this is reached and the max_cohort_size is reached for recommended dose then the trial can stop.}
+
+\item{add_random}{Should some randomness be added to choice of next dose? Default is FALSE.}
+
+\item{frac_target}{If randomness is added, how close to the 'best' dose is acceptable. Default is 75 percent of P(target toxicity).}
+
+\item{over_limit_end}{The safety limit to be applied at the end of the trial}
+
+\item{n_iter}{Number of iterations in MCMC.}
 }
 \value{
 A list of 4 items: a plot of the true p(DLTs), a graphical comparison of the 2 methods, a summary of model-based simulations, and a summary of rule-based simulations.

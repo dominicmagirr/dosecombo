@@ -4,7 +4,8 @@
 \alias{get_next_dose}
 \title{Get the next dose}
 \usage{
-get_next_dose(info_mat, doses, current_dose)
+get_next_dose(info_mat, doses, current_dose, add_random = FALSE,
+  frac_target = 0.75)
 }
 \arguments{
 \item{info_mat}{Matrix containing information about underdosing and overdosing at each dose combination}
@@ -12,6 +13,10 @@ get_next_dose(info_mat, doses, current_dose)
 \item{doses}{A list containing combination doses.}
 
 \item{current_dose}{Row number of 'doses' corresponding ot current dose.}
+
+\item{add_random}{Should some randomness be added to choice of next dose? Default is FALSE.}
+
+\item{frac_target}{If randomness is added, how close to the 'best' dose is acceptable. Default is 75 percent of P(target toxicity).}
 }
 \value{
 The row number corresponding to the dose combination with the largest probability of target

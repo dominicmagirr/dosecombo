@@ -4,7 +4,9 @@
 \alias{sim_study}
 \title{Simulate multiple studies and collect results}
 \usage{
-sim_study(doses, truth, max_n_cohort, cohort_size, n_sims, starting_dose)
+sim_study(doses, truth, max_n_cohort, cohort_size, n_sims, starting_dose,
+  max_cohort_size, max_n, max_p_target, add_random = FALSE,
+  frac_target = 0.75, over_limit_end = NA, n_iter = 2500)
 }
 \arguments{
 \item{doses}{A list containing doses on the original and log scale.}
@@ -16,6 +18,20 @@ sim_study(doses, truth, max_n_cohort, cohort_size, n_sims, starting_dose)
 \item{cohort_size}{The number of patients per cohort.}
 
 \item{n_sims}{The number of simulations.}
+
+\item{max_cohort_size}{Maximum size of cohort. If this is reached, and the max_n or max_p_target is reached then the trial can stop.}
+
+\item{max_n}{Maximum total sample size. If this is reached and the max_cohort_size is reached for recommended dose then the trial can stop.}
+
+\item{max_p_target}{Maximum probability of targeted toxicity. If this is reached and the max_cohort_size is reached for recommended dose then the trial can stop.}
+
+\item{add_random}{Should some randomness be added to choice of next dose? Default is FALSE.}
+
+\item{frac_target}{If randomness is added, how close to the 'best' dose is acceptable. Default is 75 percent of P(target toxicity).}
+
+\item{over_limit_end}{The safety limit to be applied at the end of the trial}
+
+\item{n_iter}{Number of iterations in MCMC.}
 }
 \value{
 A matrix of results. 3 columns: n, n_dlt, mtd. One row per simulation.
