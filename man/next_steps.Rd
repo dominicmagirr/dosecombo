@@ -4,8 +4,8 @@
 \alias{next_steps}
 \title{Plot what posterior would look like after first cohort.}
 \usage{
-next_steps(doses, doses_1_so_far, doses_2_so_far, n_so_far, n_dlt_so_far,
-  last_dose)
+next_steps(doses, doses_1_so_far = 1, doses_2_so_far = 1, n_so_far = 3,
+  n_dlt_so_far = 0, last_dose = c(1, 1), sim_result = NULL)
 }
 \arguments{
 \item{doses}{List of doses on original and log scales.}
@@ -19,6 +19,8 @@ next_steps(doses, doses_1_so_far, doses_2_so_far, n_so_far, n_dlt_so_far,
 \item{n_dlt_so_far}{The number of dlts on each dose combination so far (matching positions with doses_1_so_far). Vector.}
 
 \item{last_dose}{The most recent dose. Vector of length 2 on the original scale.}
+
+\item{sim_result}{Option to pass the result of a simulated trial, instead of other arguments.}
 }
 \value{
 A list of length 2. The first element is the recommended next dose. The second element is a plot of posterior.

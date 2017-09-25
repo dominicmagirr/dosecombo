@@ -1,10 +1,11 @@
 #' Choose dose combinations to be investigated, and plot the prior probabilities of toxicity.
 #'
+#' @param mono_model_1 An object of class "LogisticLogNormal".
+#' @param mono_model_2 An object of class "LogisticLogNormal".
+#' @param eta_mean Prior mean for interaction parameter.
+#' @param eta_prec Prior precision for interaction parameter.
 #' @param doses_1 The doses of drug 1 to be tested.
 #' @param doses_2 The doses of drug 2 to be tested.
-#' @param ref_dose_1 The reference dose of drug 1.
-#' @param ref_dose_2 The reference dose of drug 2.
-#' @param prior A list of prior parameters.
 #' @param over_limit A number between 0 and 1. If the probability of overdosing is more than 'over_limit'
 #' then this dose will be declared inadmissible.
 #' @return A list of 8 items:
@@ -18,21 +19,36 @@
 #' @export
 #'
 
-combine_doses = function(doses_1, doses_2, ref_dose_1, ref_dose_2, prior, over_limit){
+combine_doses = function(mono_model_1,
+                         mono_model_2,
+                         eta_mean,
+                         eta_prec,
+                         doses_1,
+                         doses_2,
+                         over_limit){
+
+
+  prior = list(mu_1 = mono_model_1@mean,
+               mu_2 = mono_model_2@mean,
+               omega_1 = solve(mono_model_1@cov),
+               omega_2 = solve(mono_model_2@cov),
+               eta_mean = eta_mean,
+               eta_prec = eta_prec)
+
+  ref_dose_1 <- mono_model_1@refDose
+  ref_dose_2 <- mono_model_2@refDose
 
   doses_with_zero = DoseCombo::doses(dose_grid(list(c(0,doses_1), c(0,doses_2))), d_star = c(ref_dose_1,ref_dose_2))
   combo_doses = DoseCombo::doses(dose_grid(list(doses_1, doses_2)), d_star = c(ref_dose_1,ref_dose_2))
 
-
-
   # return combo_doses and plot
 
   doses_with_zero_list = list(orig = doses_with_zero$orig,
-                               log_scale = doses_with_zero$log_scale,
-                               ref_dose_1 = ref_dose_1,
-                               ref_dose_2 = ref_dose_2,
-                               prior = prior,
-                               over_limit = over_limit,
+                              log_scale = doses_with_zero$log_scale,
+                              ref_dose_1 = ref_dose_1,
+                              ref_dose_2 = ref_dose_2,
+                              prior = prior,
+                              over_limit = over_limit,
                               prior_plot = NULL,
                               prior_plot_with_zero = NULL)
 

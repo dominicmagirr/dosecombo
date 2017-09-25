@@ -3,6 +3,7 @@
 export(choose_prior)
 export(combine_doses)
 export(combine_doses_trim)
+export(combo_truth)
 export(compare_all)
 export(compare_over_target)
 export(compare_overall_n)

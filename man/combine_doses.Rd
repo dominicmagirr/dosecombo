@@ -4,18 +4,21 @@
 \alias{combine_doses}
 \title{Choose dose combinations to be investigated, and plot the prior probabilities of toxicity.}
 \usage{
-combine_doses(doses_1, doses_2, ref_dose_1, ref_dose_2, prior, over_limit)
+combine_doses(mono_model_1, mono_model_2, eta_mean, eta_prec, doses_1, doses_2,
+  over_limit)
 }
 \arguments{
+\item{mono_model_1}{An object of class "LogisticLogNormal".}
+
+\item{mono_model_2}{An object of class "LogisticLogNormal".}
+
+\item{eta_mean}{Prior mean for interaction parameter.}
+
+\item{eta_prec}{Prior precision for interaction parameter.}
+
 \item{doses_1}{The doses of drug 1 to be tested.}
 
 \item{doses_2}{The doses of drug 2 to be tested.}
-
-\item{ref_dose_1}{The reference dose of drug 1.}
-
-\item{ref_dose_2}{The reference dose of drug 2.}
-
-\item{prior}{A list of prior parameters.}
 
 \item{over_limit}{A number between 0 and 1. If the probability of overdosing is more than 'over_limit'
 then this dose will be declared inadmissible.}

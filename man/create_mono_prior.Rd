@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_mono_prior.R
 \name{create_mono_prior}
 \alias{create_mono_prior}
-\title{Create a prior for monotherapy dose response a la crmPack}
+\title{Create a prior for monotherapy dose response, similar to crmPack approach}
 \usage{
 create_mono_prior(doses, ref_dose, prior_medians, psuedo_n)
 }
@@ -19,6 +19,6 @@ create_mono_prior(doses, ref_dose, prior_medians, psuedo_n)
 A crmPack model object.
 }
 \description{
-Create a prior for monotherapy dose response a la crmPack
+Create a prior for monotherapy dose response, similar to crmPack approach
 }
 
